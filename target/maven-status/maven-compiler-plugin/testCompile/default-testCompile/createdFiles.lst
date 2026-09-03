@@ -1,0 +1,4 @@
+com\campusos\tests\BaseTest.class
+com\campusos\tests\LoginTest.class
+com\campusos\tests\QuickNavigationTest.class
+com\campusos\tests\NavigationTest.class

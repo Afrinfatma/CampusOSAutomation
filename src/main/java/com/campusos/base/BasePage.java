@@ -2,6 +2,7 @@ package com.campusos.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,14 +30,20 @@ public class BasePage {
         ).click();
     }
 
+//    protected void enterText(By locator, String text) {
+//
+//        wait.until(
+//                ExpectedConditions.visibilityOfElementLocated(locator)
+//        ).clear();
+//
+//        driver.findElement(locator).sendKeys(text);
+//    }
+
     protected void enterText(By locator, String text) {
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(locator)
-        ).clear();
-
-        driver.findElement(locator).sendKeys(text);
-    }
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        element.clear();
+        element.sendKeys(text);
+}
 
     protected boolean isDisplayed(By locator) {
 
@@ -66,19 +73,26 @@ public class BasePage {
         }
     }
 
+//    protected String getAttribute(By locator, String attributeName) {
+//
+//        try {
+//
+//            return wait.until(
+//                    ExpectedConditions.presenceOfElementLocated(locator)
+//            ).getAttribute(attributeName);
+//
+//        } catch (Exception e) {
+//
+//            return "";
+//        }
+//    }
     protected String getAttribute(By locator, String attributeName) {
-
         try {
-
-            return wait.until(
-                    ExpectedConditions.presenceOfElementLocated(locator)
-            ).getAttribute(attributeName);
-
+            return wait.until(ExpectedConditions.presenceOfElementLocated(locator)).getAttribute(attributeName);
         } catch (Exception e) {
-
             return "";
         }
-    }
+}
 
     protected void clearText(By locator) {
 
